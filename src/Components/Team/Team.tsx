@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ShowTeam from '../ShowTeam/ShowTeam';
 
 interface IMember {
     name:string;
@@ -12,7 +13,7 @@ const Team = () => {
         email:""
     });
     const [ team, setTeam] = useState<IMember[]>([])
-
+    const [ showTeam, setShowTeam ]  = useState<IMember[]>([])
 
     const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
       setMembers({...members, [e.target.name] : e.target.value});
@@ -21,12 +22,12 @@ const Team = () => {
 
     const onclick = (e: any) =>{
         setTeam([...team, members]);
-        console.log(team);
         e.target.parentElement.children[0].value = "";
         e.target.parentElement.children[2].value = "";
     }
     const makeATeam  =() =>{
-
+        setShowTeam(team)
+        // console.log(showTeam);
     }
 
     return (
@@ -37,13 +38,13 @@ const Team = () => {
             <br />
             <br />
             <br />
-            <button onClick={onclick}>Add Member</button>
+            <button onClick={(e) => onclick(e)}>Add Member</button>
             <br />
             <br/>
             <button onClick = {makeATeam}>Add this on Team</button>
             <div>
                 {
-                    team?.map(c => <h1> key={c.email} {c.name} </h1>)
+                    <ShowTeam showTeam={showTeam}></ShowTeam>
                 }
             </div>
         </div>
