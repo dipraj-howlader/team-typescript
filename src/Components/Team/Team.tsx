@@ -20,14 +20,13 @@ const Team = () => {
 
     };
 
-    const onclick = (e: any) =>{
+    const handleClick = (e: any) =>{
         setTeam([...team, members]);
         e.target.parentElement.children[0].value = "";
         e.target.parentElement.children[2].value = "";
     }
     const makeATeam  =() =>{
         setShowTeam(team)
-        // console.log(showTeam);
     }
 
     return (
@@ -38,13 +37,13 @@ const Team = () => {
             <br />
             <br />
             <br />
-            <button onClick={(e) => onclick(e)}>Add Member</button>
+            <button onClick={(e) => handleClick(e)}>Add Member</button>
             <br />
             <br/>
-            <button onClick = {makeATeam}>Add this on Team</button>
+            <button onClick = {makeATeam}>Finally Make a team</button>
             <div>
                 {
-                    <ShowTeam showTeam={showTeam}></ShowTeam>
+                    <ShowTeam key={showTeam} showTeam={showTeam}></ShowTeam>
                 }
             </div>
         </div>

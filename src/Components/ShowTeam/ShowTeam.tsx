@@ -6,7 +6,6 @@ interface ISHowTeam {
 
 const ShowTeam = (props : any) => {
     const  PropsFactor:any =  props.showTeam;
-    console.log(props.showTeam);
     return (
         <div>
             {
